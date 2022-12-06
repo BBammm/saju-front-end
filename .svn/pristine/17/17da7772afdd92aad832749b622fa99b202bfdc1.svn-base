@@ -1,0 +1,69 @@
+import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule, IonSlide, IonSlides, MenuController } from '@ionic/angular';
+
+@Component({
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+})
+export class HeaderComponent implements OnInit {
+    @ViewChild('slider') slider: IonSlides;
+    public slideOpts = {
+        slidesOffsetBefore: 16,
+        slidesOffsetAfter: 16,
+        spaceBetween: 6,    // 사이간격조정
+        slidesPerView: 6, // slide item 갯수 소수점은 걸쳐짐
+        freeMode: true,
+    };
+    public subSlideOpts = {
+        slidesOffsetBefore: 32,
+        slidesOffsetAfter: 32,
+        spaceBetween: 10,    // 사이간격조정
+        slidesPerView: 2.6, // slide item 갯수 소수점은 걸쳐짐
+        freeMode: true,
+    };
+
+    public menuArr = ['Menu1', 'Menu2', 'Menu3', 'Menu4', 'Menu5', 'Menu6', 'Menu7', 'Menu8',];
+    public selectedMenu: any = 'Menu1';
+
+    constructor(
+        private menu: MenuController
+    ) { }
+
+    ngOnInit() { }
+
+    /**
+     * 서브메뉴 바뀜
+     */
+    // public changeSubMenu(menu: any) {
+    //     console.log(menu);
+    //     this.selectedMenu = menu;
+    //     this.slider.slideTo(0);
+    // }
+
+    /**
+     * openMenu
+     */
+    public openMenu() {
+        this.menu.open();
+    }
+
+}
+
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+    ],
+    declarations: [
+        HeaderComponent
+    ],
+    exports: [
+        HeaderComponent
+    ]
+})
+export class HeaderModule { }

@@ -1,0 +1,51 @@
+<app-header></app-header>
+<ion-content *ngIf="!isPending">
+    <div style="color: #000;">
+        <h1>쥐</h1>
+        <ul [innerHTML]="zodiacList.rat"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>소</h1>
+        <ul [innerHTML]="zodiacList.ox"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>호랑이</h1>
+        <ul [innerHTML]="zodiacList.tiger"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>토끼</h1>
+        <ul [innerHTML]="zodiacList.rabbit"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>용</h1>
+        <ul [innerHTML]="zodiacList.dragon"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>뱀</h1>
+        <ul [innerHTML]="zodiacList.snake"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>말</h1>
+        <ul [innerHTML]="zodiacList.horse"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>양</h1>
+        <ul [innerHTML]="zodiacList.sheep"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>원숭이</h1>
+        <ul [innerHTML]="zodiacList.monkey"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>닭</h1>
+        <ul [innerHTML]="zodiacList.rooster"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>개</h1>
+        <ul [innerHTML]="zodiacList.dog"></ul>
+    </div>
+    <div style="color: #000;">
+        <h1>돼지</h1>
+        <ul [innerHTML]="zodiacList.pig"></ul>
+    </div>
+</ion-content>

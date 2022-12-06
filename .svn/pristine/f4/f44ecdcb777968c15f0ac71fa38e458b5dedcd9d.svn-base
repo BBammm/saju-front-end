@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+import { KakaoService } from '../kakao.service';
+import { LoadingController } from '@ionic/angular';
+
+@Component({
+    selector: 'app-auth',
+    templateUrl: './auth.page.html',
+    styleUrls: ['./auth.page.scss'],
+})
+export class AuthPage implements OnInit {
+
+    public CLIENT_ID = "aa7e499d760c86bf748f1bccbc62fb4c";
+    // public REDIRECT_URL = "http://127.0.0.1:8100/home";
+    public REDIRECT_URL = "http://admin.saju.fxstar.co.kr/auth/social/kakao/login";
+    public URL = `https://kauth.kakao.com/oauth/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URL}&response_type=code`;
+
+    constructor(
+        private kakaoSvc: KakaoService,
+        public loadingController: LoadingController,
+    ) {
+
+    }
+
+    ngOnInit() {
+        // const code = new URL(window.location.href).searchParams.get('code');
+        // console.log('code = ', code);
+    }
+
+    /**
+     * kakaoLogin
+     */
+    public async kakaoLogin() {
+        const loading = await this.loadingController.create({});
+        await loading.present();
+
+        this.kakaoSvc.login().then((res) => {
+            // alert(JSON.stringify(res));
+        });
+    }
+
+}

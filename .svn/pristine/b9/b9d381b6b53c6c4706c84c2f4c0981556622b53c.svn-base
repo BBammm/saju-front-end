@@ -1,0 +1,37 @@
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+import { Axios } from 'axios';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class KakaoService {
+
+    public CLIENT_ID = "aa7e499d760c86bf748f1bccbc62fb4c";
+    // public REDIRECT_URL = "http://127.0.0.1:8100/home";
+    public REDIRECT_URL = "http://admin.saju.fxstar.co.kr/auth/social/kakao/login";
+    public URL = `https://kauth.kakao.com/oauth/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URL}&response_type=code`;
+
+    constructor(
+        public http: HttpClient
+    ) { }
+
+    /**
+     * name
+     */
+    public async login() {
+
+        const url = `https://kauth.kakao.com/oauth/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URL}&response_type=code`;
+
+        return this.http.get(`https://kauth.kakao.com/oauth/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URL}&response_type=code`).subscribe((res) => {
+            // alert(JSON.stringify(res));
+            console.log('res = ', res);
+        });
+
+        // const code = new URL(window.location.href).searchParams.get('code');
+        // return code;
+    }
+
+}

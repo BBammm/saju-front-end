@@ -1,0 +1,316 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true" *ngIf="!isUserPending && !isMainUserPending">
+    <div class="saju-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <app-cal-today></app-cal-today>
+                    <p class="user">
+                        <b>{{profile.name}}</b> <span>{{profile.birth_format}} ({{profile.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <h1 class="today-summary">{{profile.name}} 님의 사주명식</h1>
+                    <div class="saju-info">
+                        <div class="card-box">
+                            <ul>
+                                <li>시주</li>
+                                <li>일주</li>
+                                <li>월주</li>
+                                <li>연주</li>
+                            </ul>
+                            <ul class="celestial">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_h_sipsin}}
+                                        </span>
+                                        <p>{{mainUser.hour_h}}
+                                            <small class="day">{{mainUser.hour_h_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="point">
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_h_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.day_h}}
+                                            <small class="day">{{mainUser.day_h_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_h_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.month_h}}
+                                            <small class="day">{{mainUser.month_h_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_h_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.year_h}}
+                                            <small class="day">{{mainUser.year_h_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="zodiac">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_e_sipsin}}
+                                        </span>
+                                        <p>{{mainUser.hour_e}}
+                                            <small class="day">{{mainUser.hour_e_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_e_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.day_e}}
+                                            <small class="day">{{mainUser.day_e_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_e_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.month_e}}
+                                            <small class="day">{{mainUser.month_e_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_e_sipsin}}
+                                        </span>
+                                        <p>
+                                            {{mainUser.year_e}}
+                                            <small class="day">{{mainUser.year_e_oheng_format}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card accordion mt-0" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a (click)="bannerFlag = 'myungli'">
+                                        <i>🌞</i>
+                                        자평명리학 평생총운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>📆</i>
+                                        올해의 토정비결
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>🐯</i>
+                                        새해신수
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>🔮</i>
+                                        전생운
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-container>
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+            </ng-container>
+                <!----- 자평명리학 평생총운 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>✨</i>
+                                사주총평
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🙂</i>
+                                선천성격운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💼</i>
+                                직업운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                시기별운세
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>👩‍❤️‍👨</i>
+                                부부애정운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!----- 올해의 토정비결 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>🗓️︎</i>
+                                일년신수 (전반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🗓️</i>
+                                일년신수 (후반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💌</i>
+                                연애운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💼</i>
+                                직장운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🙏🏻</i>
+                                소망운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!------------- 새해신수 ----------->
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>✨</i>
+                                총운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💰️</i>
+                                사업거래운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💑</i>
+                                연인애정운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💊</i>
+                                건강질병운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>✈️</i>
+                                여행이사운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💼</i>
+                                직장관록운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ng-container *ngIf="!isSajuPending">
+                    <div class="card accordion" id="">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    자평명리학 결과보기
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <!-- <pre class="result-text">{{healthData.data1}}</pre> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            <!-- </ng-container> -->
+        </div>
+    </div>
+</ion-content>

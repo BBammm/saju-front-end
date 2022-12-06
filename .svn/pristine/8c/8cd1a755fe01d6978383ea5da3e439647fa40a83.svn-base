@@ -1,0 +1,52 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <div class="main-wrapper">
+        <!-- <article>
+            <h4>{{currentDate}} {{currentDay}}</h4>
+        </article> -->
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <p class="date">{{currentDate}} {{currentDay}}</p>
+                    <p class="user">
+                        <b>알렉스</b> <span>1987.04.30 (양)</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <p>알렉스 님,</p>
+                    <h1 class="today-summary">가까운 사람과 문제가 생길 수 있는 날이에요</h1>
+                </article>
+                <a class="btn-style">
+                    자세히
+                    <img src="/assets/images/mini-arrow.png" alt="">
+                </a>
+            </div>
+            <div class="animal-12">
+                <img src="/assets/images/rabbit.png" alt="">
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+
+
+
+
+
+<!-- 슬라이드 소스 -->
+<!-- <article>
+    <ion-slides [options]="slideOpts" #slider>
+        <ng-container *ngFor="let menu of [1,2,3,4]; index as i">
+            <ion-slide>
+                <div class="slide">
+                    <img src="../../assets/images/slide-{{i+1}}.png" />
+                    <h2>Welcome</h2>
+                    <p>The <b>ionic conference app</b> is a practical preview of the ionic.</p>
+                </div>
+            </ion-slide>
+        </ng-container>
+    </ion-slides>
+
+    <button (click)="prev()" class="swiper-button-prev">prev</button>
+    <button (click)="next()" class="swiper-button-next">next</button>
+</article> -->

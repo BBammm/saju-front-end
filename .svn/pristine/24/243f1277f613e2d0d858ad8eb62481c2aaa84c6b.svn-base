@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { SajuPageRoutingModule } from './saju-routing.module';
+
+import { SajuPage } from './saju.page';
+import { HeaderModule } from '../components/header/header.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SajuPageRoutingModule,
+    HeaderModule,
+  ],
+  declarations: [SajuPage]
+})
+export class SajuPageModule {}

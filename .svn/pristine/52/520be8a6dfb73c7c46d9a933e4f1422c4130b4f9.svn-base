@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { JoinService } from './service/join.service';
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'app-auth-join',
+    templateUrl: './auth-join.page.html',
+    styleUrls: ['./auth-join.page.scss'],
+})
+export class AuthJoinPage implements OnInit {
+
+    public isBtnActive =  true;
+    public joinFormGroup: FormGroup;
+
+
+    constructor(
+        private joinSvc: JoinService,
+        private router: Router,
+    ) { }
+
+    ngOnInit() {
+        this.joinFormGroup = new FormGroup({
+            name: new FormControl(),
+            gender: new FormControl('M'),
+            sl: new FormControl('S'),
+            birth_ym: new FormControl(Validators.minLength(8), Validators.maxLength(8)),
+            birth_time: new FormControl(),
+            flat_moon: new FormControl(0),
+            me: new FormControl(1),
+        })
+    }
+
+    /**
+     * 폼 시작하기 버튼 클릭 시
+     */
+    public submit() {
+        const formData = {...this.joinFormGroup.value};
+        formData.birth_time = +formData.birth_time.replace(/\:/g, '');
+        if (formData.sl === 'M') formData.flat_moon = 1;
+
+        this.joinSvc.setProfile(formData).subscribe((res) => {
+            if(!res.error) {
+                this.router.navigate(['/', 'home']);
+            }
+        })
+    }
+
+}

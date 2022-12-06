@@ -1,0 +1,112 @@
+<!-- <app-header></app-header> -->
+<ion-content [fullscreen]="true">
+    <div class="mypage-wrapper">
+        <div class="title-box">
+            <h1>
+                나의 프로필
+            </h1>
+        </div>
+        <article class="mid">
+            <form [formGroup]="myProfileFormGroup">
+                <fieldset>
+                    <label for="name">
+                        이름
+                    </label>
+                    <input type="text" id="name" placeholder="이름을 입력해주세요" formControlName="name">
+                </fieldset>
+                <fieldset class="gender-field">
+                    <label for="">
+                        성별
+                    </label>
+                    <button type="button" (click)="isBtnActive = true; myProfileFormGroup.get('gender').setValue('M')" class="male" [class.active]="isBtnActive">남자</button>
+                    <button type="button" (click)="isBtnActive = false; myProfileFormGroup.get('gender').setValue('M')" class="female" [class.active]="!isBtnActive">여자</button>
+                </fieldset>
+                <fieldset>
+                    <label for="birth">
+                        생년월일
+                    </label>
+                    <select class="" name="" formControlName="sl">
+                        <option value="S">양력</option>
+                        <option value="L">음력</option>
+                        <option value="">음력(윤달)</option>
+                    </select>
+                    <input type="number" id="birth" placeholder="ex) 19900101" formControlName="birth_ym">
+                </fieldset>
+                <fieldset>
+                    <label for="birth-time">
+                        태어난시
+                    </label>
+                    <select class="" name="" formControlName="birth_time_flag">
+                        <option value="" selected>오전</option>
+                        <option value="">오후</option>
+                        <option value="">모름</option>
+                    </select>
+                    <input type="text" id="" maxlength="5" placeholder="ex) 24:00" formControlName="birth_time">
+                    <!-- <input type="time" id="birth-time" placeholder="숫자 4자리"> -->
+                </fieldset>
+                <div class="btn-home">
+                    <button class="btn-revise">
+                        수정
+                    </button>
+                </div>
+            </form>
+        </article>
+        <hr>
+        <article class="mid">
+            <div class="title-box">
+                <h1>
+                    상대 프로필
+                </h1>
+            </div>
+            <form>
+                <fieldset>
+                    <label for="name">
+                        이름
+                    </label>
+                    <input type="text" id="name" placeholder="이름을 입력해주세요">
+                </fieldset>
+                <fieldset class="gender-field">
+                    <label for="">
+                        성별
+                    </label>
+                    <button type="button" class="male">남자</button>
+                    <button type="button" class="female">여자</button>
+                </fieldset>
+                <fieldset>
+                    <label for="birth">
+                        생년월일
+                    </label>
+                    <select class="" name="">
+                        <option value="S">양력</option>
+                        <option value="L">음력</option>
+                        <option value="">음력(윤달)</option>
+                    </select>
+                    <input type="number" id="birth" placeholder="ex) 19900101">
+                </fieldset>
+                <fieldset>
+                    <label for="birth-time">
+                        태어난시
+                    </label>
+                    <select class="" name="">
+                        <option value="" selected>오전</option>
+                        <option value="">오후</option>
+                        <option value="">모름</option>
+                    </select>
+                    <input type="text" id="" maxlength="5" placeholder="ex) 24:00">
+                    <!-- <input type="time" id="birth-time" placeholder="숫자 4자리"> -->
+                </fieldset>
+                <div class="btn-home">
+                    <button class="btn-revise">
+                        수정
+                    </button>
+                    <button class="btn-delete">
+                        삭제
+                    </button>
+                </div>
+            </form>
+        </article>
+        <!-- <button type="submit" class="plus-user-btn">
+            추가하기
+        </button> -->
+    </div>
+</ion-content>

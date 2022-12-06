@@ -1,0 +1,122 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true" *ngIf="!isUserPending">
+    <div class="fortune-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <app-cal-today></app-cal-today>
+                    <p class="user">
+                        <b>{{profile.name}}</b> <span>{{profile.birth_format}} ({{profile.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <p>{{profile.name}} 님,</p>
+                    <h1 class="today-summary">
+                        다양한 운세를 통하여<br/>
+                        오늘하루를 계획해보세요.
+                    </h1>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <i>🍀</i>
+                                        오늘의운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>❤️</i>
+                                        오늘의 애정운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>🙏🏻</i>
+                                        오늘의 소망운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍💼</i>
+                                        오늘의 사업운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍🧭</i>
+                                        오늘의 방위운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍💰</i>
+                                        오늘의 금전운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍🍀</i>
+                                        현재의 운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍💸</i>
+                                        현재의 금전 재물운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍🌈</i>
+                                        현재 행운색상
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍📍</i>
+                                        현재의 길흉사
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>‍👩🏻‍❤️‍👨🏻</i>
+                                        현재의 이성연애운
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tumb-card card">
+                <img src="/assets/images/today-banner.png" alt="">
+            </div>
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            오늘의운세 결과보기
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <pre class="result-text">12312312312321</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

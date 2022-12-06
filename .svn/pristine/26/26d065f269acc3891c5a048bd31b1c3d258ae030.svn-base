@@ -1,0 +1,25 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class SocialAuthService {
+
+    constructor(
+        private http: HttpClient
+    ) { }
+
+    /**
+     * 카카오 웹 로그인 시 유저 기본정보 등록
+     */
+    public kakaoWebLogin(id: number, params: any) {
+        return this.http.post<any>(`${environment.api.v1}/login`, {
+            provider: 'kakao',
+            provider_id: id,
+            name: params.profile.nickname,
+            email: params.email
+        });
+    }
+}

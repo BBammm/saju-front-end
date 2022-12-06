@@ -1,0 +1,1 @@
+ion-header{max-width:720px;position:sticky;width:100%;top:0;margin:auto;z-index:999;padding:15px 0;background-color:#fff}ion-slides{color:#000}

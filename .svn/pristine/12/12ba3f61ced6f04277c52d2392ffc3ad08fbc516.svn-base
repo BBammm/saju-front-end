@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-today-fortune',
+  templateUrl: './today-fortune.page.html',
+  styleUrls: ['./today-fortune.page.scss'],
+})
+export class TodayFortunePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

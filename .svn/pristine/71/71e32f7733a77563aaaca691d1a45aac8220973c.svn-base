@@ -1,0 +1,113 @@
+import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule, IonSlide, IonSlides, MenuController } from '@ionic/angular';
+import { Event, NavigationEnd, Router } from '@angular/router';
+
+@Component({
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+})
+export class HeaderComponent implements OnInit {
+    @ViewChild('slider') slider: IonSlides;
+    public slideOpts = {
+        slidesOffsetBefore: 16,
+        slidesOffsetAfter: 16,
+        spaceBetween: 6,    // 사이간격조정
+        slidesPerView: 6, // slide item 갯수 소수점은 걸쳐짐
+        freeMode: true,
+    };
+    public subSlideOpts = {
+        slidesOffsetBefore: 32,
+        slidesOffsetAfter: 32,
+        spaceBetween: 10,    // 사이간격조정
+        slidesPerView: 2.6, // slide item 갯수 소수점은 걸쳐짐
+        freeMode: true,
+    };
+
+    public menuArr = [
+        {
+            title: '추천',
+            path: 'recommend'
+        },
+        {
+            title: '운세',
+            path: 'fortune'
+        },
+        {
+            title: '사주',
+            path: 'saju'
+        },
+        {
+            title: '타로',
+            path: 'tarot'
+        },
+        {
+            title: '궁합',
+            path: 'compat'
+        },
+        {
+            title: '18+',
+            path: 'adult'
+        },
+    ];
+    public selectedIndex = 0;
+    public currentRoute: string;
+
+    constructor(
+        private menu: MenuController,
+        private router: Router,
+    ) {
+        this.router.events.subscribe((e: Event) => {
+            if (e instanceof NavigationEnd) {
+                const url = e.url.split('/')[1];
+                console.log(url);
+                this.currentRoute = url;
+            }
+        })
+    }
+
+    ngOnInit() { }
+
+    /**
+     * 서브메뉴 바뀜
+     */
+    // public changeSubMenu(menu: any) {
+    //     console.log(menu);
+    //     this.selectedMenu = menu;
+    //     this.slider.slideTo(0);
+    // }
+
+    /**
+     * openMenu
+     */
+    public openMenu() {
+        this.menu.open();
+    }
+
+    public goMyPageRoute(url: string) {
+        this.router.navigate(['/', 'mypage', url]);
+    }
+
+    public activeMenu(path) {
+        this.router.navigate(['/', path]);
+    }
+
+}
+
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+    ],
+    declarations: [
+        HeaderComponent
+    ],
+    exports: [
+        HeaderComponent
+    ]
+})
+export class HeaderModule { }

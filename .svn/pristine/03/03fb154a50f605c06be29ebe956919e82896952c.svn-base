@@ -1,0 +1,46 @@
+<!-- <app-header></app-header> -->
+<ion-content [fullscreen]="true">
+    <div class="harmony-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <!-- <app-cal-today></app-cal-today> -->
+                    09월 26일 월요일
+                    <p class="user">
+                        <b>홍길동</b> <span>생년월일</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <p>홍길동 님,</p>
+                    <h1 class="today-summary">
+                        나의 연인은? <br/>
+                        연애 운세들을 통해 알아보세요
+                    </h1>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <h4 class="sub-title">
+                여러가지 연애운세를 확인해보세요.
+            </h4>
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <div class="collapsed thum-box" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <img src="/assets/images/ex-image.png" alt="">
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <pre class="result-text">12312312421askdasjkdasl</pre>
+                            <hr>
+                            <div class="etc-btn">
+                                <button>
+                                    <i class="fa-solid fa-share-nodes"></i> 공유
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

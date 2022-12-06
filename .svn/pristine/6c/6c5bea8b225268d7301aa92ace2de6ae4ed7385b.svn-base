@@ -1,0 +1,170 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <div class="main-wrapper" *ngIf="!isPending">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <p class="date">{{currentDate}} {{currentDay}}</p>
+                    <p class="user">
+                        <b>{{user.name}}</b> <span>{{user.birth_format}} ({{user.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <p>{{user.name}} 님,</p>
+                    <h1 class="today-summary">가까운 사람과 문제가 생길 수 있는 날이에요</h1>
+                </article>
+                <a href="#" class="btn-style">
+                    자세히
+                    <img src="/assets/images/mini-arrow.png" alt="">
+                </a>
+            </div>
+            <div class="animal-12">
+                <img src="/assets/images/rabbit.png" alt="">
+            </div>
+        </div>
+        <div class="content">
+            <h4 class="sub-title">
+                다른 운세도 확인해보세요
+            </h4>
+            <div class="card">
+                <span class="badge">토끼띠 운세</span>
+                <h3 class="card-title">
+                    과도한 욕심이 화를 부를 수도 있어요
+                </h3>
+                <p class="explanation">
+                    안정적이고 차분한 하루라고 볼 수 있습니다. 하지만 안정성
+                    아래에는 위태로운 강이 흐르고 있다는 사실을 간과해서는
+                    안 됩니다. 무리해서 일을 처리하려고 하거나 욕심을 부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면
+                </p>
+                <div class="etc-btn">
+                    <button (click)="share()">
+                        공유 <i class="fa-solid fa-share-from-square"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <span class="badge">황소자리 운세</span>
+                <h3 class="card-title">
+                    성실함을 무기로
+                </h3>
+                <p class="explanation">
+                    안정적이고 차분한 하루라고 볼 수 있습니다. 하지만 안정성
+                    아래에는 위태로운 강이 흐르고 있다는 사실을 간과해서는
+                    안 됩니다. 무리해서 일을 처리하려고 하거나 욕심을 부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면
+                </p>
+            </div>
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <i>🍀</i>
+                                        오늘의운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i>🦄</i>
+                                        띠운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i>⭐</i>
+                                        별자리 운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i>💓</i>
+                                        바이오리듬
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i>🩸</i>
+                                        혈액형
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i>🙁</i>
+                                        피해야할사람
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tumb-card card">
+                <img src="/assets/images/star-banner.png" alt="">
+            </div>
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            별자리운세 결과보기
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="result-text">
+                                처녀좌의 수호성은 지혜와 기술 그리고 지도와 교수를 관장하는 수성입니다. 처녀좌의 사람은
+                                감정이 섬세하며 순수한 정신을 간직하고 있습니다.
+
+                                그래서 자기를 희생하여도 여전히 모든 일에 헌신적인 사명감을 가지고 성의를 다합니다. 어떤
+                                일을 할 때에는 보다 높고 완전한 수준을 향하여 일로 매진하며 결코 중도에서 포기하거나 좋
+                                은 형편의 현실과 타협하지 않는 성격을 가지고 있습니다.
+
+                                희망과 꿈의 세계는 늘 이러한 사람들에게 무한한 봉사 정신을 요구하고 있습니다. 강한 신념
+                                으로 능동적이고 독립심도 강하며 아무리 어려운 난관에 부딪치더라도 해결해 나갈 능력이 있
+                                습니다.
+
+                                순수하지만 순진하지 않고 정확하고 현실적인 것이 특징이며 왕성한 지식욕의 소유자입니다.
+                                날카롭고 직선적인 재치는 긴장상태인 사람에겐 큰 위로를 줄 수 있으나 잘못 전달되면 원망
+                                을 듣기도 합니다.
+
+                                융통성있는 자세가 필요하며 비평적인 언사를 삼가고 현실에서 만족을 찾으면 꿈은 더 빨리
+                                이루어질 것입니다.
+
+                                만사를 혼자서 처리하는 편이지만 가급적 타인의 도움에 감사하고 어려운 일이 생기면 지체말
+                                고 도움을 청해야 합니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+
+
+
+
+
+<!-- 슬라이드 소스 -->
+<!-- <article>
+    <ion-slides [options]="slideOpts" #slider>
+        <ng-container *ngFor="let menu of [1,2,3,4]; index as i">
+            <ion-slide>
+                <div class="slide">
+                    <img src="../../assets/images/slide-{{i+1}}.png" />
+                    <h2>Welcome</h2>
+                    <p>The <b>ionic conference app</b> is a practical preview of the ionic.</p>
+                </div>
+            </ion-slide>
+        </ng-container>
+    </ion-slides>
+
+    <button (click)="prev()" class="swiper-button-prev">prev</button>
+    <button (click)="next()" class="swiper-button-next">next</button>
+</article> -->

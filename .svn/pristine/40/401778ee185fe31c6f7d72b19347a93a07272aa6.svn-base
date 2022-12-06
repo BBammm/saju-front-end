@@ -1,0 +1,75 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { JoinService } from './service/join.service';
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'app-auth-join',
+    templateUrl: './auth-join.page.html',
+    styleUrls: ['./auth-join.page.scss'],
+})
+export class AuthJoinPage implements OnInit {
+
+    public isBtnActive = true;
+    public joinFormGroup: FormGroup;
+
+    public is_disabled = false;
+
+    constructor(
+        private joinSvc: JoinService,
+        private router: Router,
+    ) { }
+
+    ngOnInit() {
+        this.joinFormGroup = new FormGroup({
+            name: new FormControl('', [Validators.required]),
+            gender: new FormControl('M', [Validators.required]),
+            sl: new FormControl('S', [Validators.required]),
+            birth_ym: new FormControl('', [Validators.minLength(8), Validators.maxLength(8), Validators.required]),
+            birth_time: new FormControl(''),
+            birth_time_flag: new FormControl('', [Validators.required]),
+            flat_moon: new FormControl(0, [Validators.required]),
+            me: new FormControl(1, [Validators.required]),
+        });
+    }
+
+    /**
+     * 폼 시작하기 버튼 클릭 시
+     */
+    public submit() {
+        if (this.joinFormGroup.invalid) {
+            return alert('정확하게 입력해 주세요.');
+        }
+        const formData = { ...this.joinFormGroup.value };
+        if (formData.birth_time_flag === '3') {
+            formData.birth_time = null;
+        }
+        if (formData.birth_time !== null) formData.birth_time = +formData.birth_time.replace(/\:/g, '');
+        if (formData.sl === 'M') formData.flat_moon = 1;
+        console.log('formData = ', formData);
+
+        this.joinSvc.setProfile(formData).subscribe((res) => {
+            if(!res.error) {
+                this.router.navigate(['/', 'home']);
+            }
+        });
+    }
+
+    /**
+     * 오전오후모름 체크
+     */
+    public changeFlag(e: any) {
+        if (e.target.value === '3') {
+            this.is_disabled = true;
+        } else {
+            this.is_disabled = false;
+        }
+    }
+
+    birthTimeFormat(event) {
+        if (event.data && this.joinFormGroup.get('birth_time').value.length < 4) {
+            const two_chars_no_colons_regex = /([^:]{2}(?!:))/;
+            event.target.value = event.target.value.replace(two_chars_no_colons_regex, "$1:");
+        }
+    }
+}

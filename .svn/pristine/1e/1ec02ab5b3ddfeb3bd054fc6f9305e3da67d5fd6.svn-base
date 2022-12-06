@@ -1,0 +1,41 @@
+<ion-header [translucent]="true" fullscreen>
+    <div>
+        <ion-slides [options]="slideOpts">
+            <ng-container *ngFor="let menu of menuArr; index as i">
+                <ion-slide (click)="changeSubMenu(menu)">{{menu}}</ion-slide>
+            </ng-container>
+        </ion-slides>
+    </div>
+    <!-- <div>
+        <ion-slides [options]="subSlideOpts" #slider>
+            <ng-container *ngIf="selectedMenu === 'Menu1'">
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu2'">
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu3'">
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu4'">
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+            </ng-container>
+        </ion-slides>
+    </div> -->
+</ion-header>

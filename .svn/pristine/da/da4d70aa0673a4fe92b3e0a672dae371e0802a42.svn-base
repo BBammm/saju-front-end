@@ -1,0 +1,55 @@
+<ion-content>
+    <div class="auth-wrapper">
+        <div class="title-box">
+            <h1>
+                회원가입을 위하여<br/>
+                프로필을 입력해주세요
+            </h1>
+        </div>
+        <article class="mid">
+            <fieldset>
+                <label for="name">
+                    이름
+                </label>
+                <input type="text" id="name" placeholder="이름을 입력해주세요">
+            </fieldset>
+            <fieldset class="gender-field">
+                <label for="">
+                    성별
+                </label>
+                <button (click)="isActive = true" class="male" [class.active]="isActive">남자</button>
+                <button (click)="isActive = false" class="female" [class.active]="!isActive">여자</button>
+            </fieldset>
+            <fieldset>
+                <label for="birth">
+                    생년월일
+                </label>
+                <select class="" name="">
+                    <option value="" selected>
+                        선택
+                    </option>
+                    <option value="">양력</option>
+                    <option value="">음력</option>
+                    <option value="">음력(윤달)</option>
+                </select>
+                <input type="text" id="birth" placeholder="숫자 8자리">
+            </fieldset>
+            <fieldset>
+                <label for="birth-time">
+                    태어난시
+                </label>
+                <select class="" name="">
+                    <option value="" selected>
+                        선택
+                    </option>
+                    <option value="">모름</option>
+                </select>
+                <input type="time" id="birth-time" placeholder="숫자 4자리">
+            </fieldset>
+        </article>
+        <hr>
+        <button class="submit-btn">
+            시작하기
+        </button>
+    </div>
+</ion-content>

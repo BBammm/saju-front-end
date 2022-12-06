@@ -1,0 +1,89 @@
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IonSlides } from '@ionic/angular';
+// import * as moment from 'moment';
+
+@Component({
+    selector: 'app-home',
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+})
+
+export class HomePage implements OnInit {
+    @ViewChild('slider') slider: IonSlides;
+
+    public currentDate: any;
+    public currentDay: any;
+    public slideOpts = {
+        slidesPerView: 1.6, // slide item 갯수 소수점은 걸쳐짐
+    };
+
+
+    constructor(
+        private sanitizer: DomSanitizer,
+    ) { }
+
+    ngOnInit() {
+        // this.currentDate = moment().format('MM월 DD일')
+        // this.getCurrentDay();
+
+    }
+
+    /**
+     * next
+     */
+    public next() {
+        this.slider.slideNext();
+    }
+
+    /**
+     * prev
+     */
+    public prev() {
+        this.slider.slidePrev();
+    }
+
+    /**
+     * 로그인
+     */
+    public login(type: string) {
+        switch(type) {
+            case 'kakao':
+                console.log('kakao in');
+
+            break;
+        }
+    }
+
+    // private getCurrentDay() {
+    //     const day = moment.weekdays();
+    //     day.forEach(el => {
+    //         switch(el) {
+    //             case 'Sunday':
+    //                 this.currentDay = '일요일';
+    //                 break;
+    //             case 'Monday':
+    //                 this.currentDay = '월요일';
+    //                 break;
+    //             case 'Tuesday':
+    //                 this.currentDay = '화요일';
+    //                 break;
+    //             case 'Wednesday':
+    //                 this.currentDay = '수요일';
+    //                 break;
+    //             case 'Thursday':
+    //                 this.currentDay = '목요일';
+    //                 break;
+    //             case 'Friday':
+    //                 this.currentDay = '금요일';
+    //                 break;
+    //             case 'Saturday':
+    //                 this.currentDay = '토요일';
+    //                 break;
+    //         }
+    //     });
+    // }
+
+
+
+}

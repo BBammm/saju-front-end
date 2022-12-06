@@ -1,0 +1,210 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <div class="saju-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <app-cal-today></app-cal-today>
+                    <p class="user">
+                        <b>이름</b> <span>생년월일</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <h1 class="today-summary">홍길동 님의 사주명식</h1>
+                    <div class="saju-info">
+                        <div class="card-box">
+                            <ul>
+                                <li>시주</li>
+                                <li>일주</li>
+                                <li>월주</li>
+                                <li>연주</li>
+                            </ul>
+                            <ul class="celestial">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            상관
+                                        </span>
+                                        <p>庚<small class="day">금</small></p>
+
+                                    </div>
+                                </li>
+                                <li class="point">
+                                    <div class="card">
+                                        <span class="title">
+                                            상관
+                                        </span>
+                                        <p>
+                                            庚<small class="day">금</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            상관
+                                        </span>
+                                        <p>
+                                            庚<small class="day">금</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            상관
+                                        </span>
+                                        <p>
+                                            庚<small class="day">금</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="zodiac">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            식신
+                                        </span>
+                                        <p>未<small class="day">미</small></p>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            식신
+                                        </span>
+                                        <p>
+                                            未<small class="day">미</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            식신
+                                        </span>
+                                        <p>
+                                            未<small class="day">미</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            정재
+                                        </span>
+                                        <p>
+                                            未<small class="day">미</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card accordion mt-0" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <i>🌞</i>
+                                        자평명리학 평생총운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>📆</i>
+                                        올해의 토정비결
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>🐯</i>
+                                        새해신수
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i>🔮</i>
+                                        전생운
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <ng-container *ngIf=""> -->
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>🌞</i>
+                                사주총평
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🐯</i>
+                                선천성격운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🔮</i>
+                                직업운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🔮</i>
+                                시기별운세
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🔮</i>
+                                부부애정운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                자평명리학 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">//dd</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </ng-container> -->
+        </div>
+    </div>
+</ion-content>

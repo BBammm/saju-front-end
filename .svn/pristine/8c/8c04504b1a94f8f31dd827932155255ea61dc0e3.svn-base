@@ -1,0 +1,169 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../core/auth/auth.service';
+import { Subscription } from 'rxjs';
+import { HomeService } from '../home/service/home.service';
+import { SajuService } from './service/saju.service';
+
+@Component({
+    selector: 'app-saju',
+    templateUrl: './saju.page.html',
+    styleUrls: ['./saju.page.scss'],
+})
+export class SajuPage implements OnInit {
+
+    public userSubscription: Subscription;
+    public profile: any;
+    public mainUser: any;
+    public sajuData: any;
+    public healthData: any;
+
+    public bannerFlag = 'myungli';
+    public subBannerFlag = 'total';
+
+    public isUserPending = true;
+    public isMainUserPending = true;
+    public isSajuPending = true;
+
+    constructor(
+        private authSvc: AuthService,
+        private homeSvc: HomeService,
+        private sajuSvc: SajuService,
+    ) { }
+
+    ngOnInit() {
+        this.setUser();
+        this.getMainUserData();
+        this.getTotalData();
+    }
+
+    private setOhengFormat(oheng: any) {
+        switch(oheng) {
+            case '土':
+                return {oheng: '土:토', class: 'saturday'};
+            case '火':
+                return {oheng: '火:화', class: 'tuesday'};
+            case '木':
+                return {oheng: '木:목', class: 'thursday'};
+            case '金':
+                return {oheng: '金:금', class: 'friday'};
+            case '水':
+                return {oheng: '水:수', class: 'wednesday'};
+        }
+    }
+
+    private setUser() {
+        this.userSubscription = this.authSvc.profile$.subscribe({
+            next: (profileInfo) => {
+                this.profile = profileInfo.profile;
+                this.profile.birth_format = this.profile.birth_ym.replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3');
+                this.isUserPending = false;
+            }
+        });
+        this.authSvc.profileSource.next();
+    }
+
+    private getMainUserData() {
+        this.homeSvc.getMainUserInfo().subscribe({
+            next: (res: any) => {
+                console.log(res);
+                this.mainUser = res.manse;
+                this.mainUser.day_e_oheng_format = this.setOhengFormat(this.mainUser.day_e_oheng);
+                this.mainUser.day_h_oheng_format = this.setOhengFormat(this.mainUser.day_h_oheng);
+                this.mainUser.hour_e_oheng_format = this.setOhengFormat(this.mainUser.hour_e_oheng);
+                this.mainUser.hour_h_oheng_format = this.setOhengFormat(this.mainUser.hour_h_oheng);
+                this.mainUser.month_e_oheng_format = this.setOhengFormat(this.mainUser.month_e_oheng);
+                this.mainUser.month_h_oheng_format = this.setOhengFormat(this.mainUser.month_h_oheng);
+                this.mainUser.month_h_oheng_format = this.setOhengFormat(this.mainUser.month_h_oheng);
+                this.mainUser.year_e_oheng_format = this.setOhengFormat(this.mainUser.year_e_oheng);
+                this.mainUser.year_h_oheng_format = this.setOhengFormat(this.mainUser.year_h_oheng);
+                this.isMainUserPending = false;
+            }
+        });
+    }
+
+    /**
+     * 사주총평
+     */
+    public getTotalData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungli().subscribe({
+            next: (res: any) => {
+                this.sajuData = res.data;
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+    /**
+     * 건강운
+     */
+    public getHealthData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungliHealth().subscribe({
+            next: (res: any) => {
+                this.sajuData = {...res};
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+    /**
+     * 선천성격운
+     */
+    public getCharacterData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungliCharacter().subscribe({
+            next: (res: any) => {
+                this.sajuData = {...res};
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+    /**
+     * 직업운
+     */
+    public getJobData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungliJob().subscribe({
+            next: (res: any) => {
+                this.sajuData = {...res};
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+    /**
+     * 시기별운세
+     */
+    public getSigiData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungliSigi().subscribe({
+            next: (res: any) => {
+                this.sajuData = res.data;
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+    /**
+     * 부부애정운
+     */
+    public getCoupleData() {
+        this.isSajuPending = true;
+        this.sajuData = null;
+        this.sajuSvc.getSajuMyungliCouple().subscribe({
+            next: (res: any) => {
+                console.log(res);
+                this.sajuData = res.data;
+                this.isSajuPending = false;
+            }
+        });
+    }
+
+}

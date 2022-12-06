@@ -1,0 +1,38 @@
+<ion-content>
+    <div class="auth-wrapper">
+        <div class="title-box">
+            <h1>
+                점박이 서비스 이용을 위하여<br/>
+                로그인 해주세요
+            </h1>
+        </div>
+        <article class="mid">
+            <ul>
+                <li>
+                    <a class="naver" [href]="URL">
+                        <i></i>
+                        네이버 계정으로 로그인
+                    </a>
+                </li>
+                <li>
+                    <a class="kakao" [href]="URL">
+                        <i></i>
+                        카카오 계정으로 로그인
+                    </a>
+                </li>
+                <li>
+                    <a class="google" [href]="URL">
+                        <i></i>
+                        구글 계정으로 로그인
+                    </a>
+                </li>
+            </ul>
+            <a [routerLink]="['/', 'home']">
+                HOME
+            </a>
+            <a [routerLink]="['/', 'sub']">
+                SUB
+            </a>
+        </article>
+    </div>
+</ion-content>

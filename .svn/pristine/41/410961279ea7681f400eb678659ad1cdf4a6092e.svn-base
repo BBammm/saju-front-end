@@ -1,0 +1,130 @@
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IonSlides } from '@ionic/angular';
+import * as moment from 'moment';
+import { AuthService } from '../core/auth/auth.service';
+import { Subscription } from 'rxjs';
+import { Share } from '@capacitor/share';
+import { HomeService } from './service/home.service';
+
+@Component({
+    selector: 'app-home',
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+})
+
+export class HomePage implements OnInit, OnDestroy {
+    @ViewChild('slider') slider: IonSlides;
+
+    public currentDate: any;
+    public currentDay: any;
+    public slideOpts = {
+        slidesPerView: 1.6, // slide item 갯수 소수점은 걸쳐짐
+    };
+    public profile: any;
+    public userSubscription: Subscription;
+    public mainUser: any;
+    public mainZodiac: any;
+
+    public isUserPending = true;
+    public isZodiacPending = true;
+    public isMainPending = true;
+
+    constructor(
+        private authSvc: AuthService,
+        private homeSvc: HomeService
+    ) {
+    }
+
+    ngOnInit() {
+        this.getCurrentDay();
+        this.userSubscription = this.authSvc.profile$.subscribe({
+            next: (profileInfo) => {
+                console.log(profileInfo.profile);
+                this.profile = profileInfo.profile;
+                this.profile.birth_format = this.profile.birth_ym.replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3');
+                this.isUserPending = false;
+            }
+        });
+        this.authSvc.profileSource.next();
+
+        this.getMainUserData();
+        this.getMainZordiacData();
+    }
+    ngOnDestroy() {
+        if (this.userSubscription) this.userSubscription.unsubscribe();
+    }
+
+    private getCurrentDay() {
+        this.currentDate = moment().format('MM월 DD일')
+        const day = moment().weekday();
+        switch (day) {
+            case 0:
+                this.currentDay = '일요일';
+                break;
+            case 1:
+                this.currentDay = '월요일';
+                break;
+            case 2:
+                this.currentDay = '화요일';
+                break;
+            case 3:
+                this.currentDay = '수요일';
+                break;
+            case 4:
+                this.currentDay = '목요일';
+                break;
+            case 5:
+                this.currentDay = '금요일';
+                break;
+            case 6:
+                this.currentDay = '토요일';
+                break;
+        }
+    }
+
+    /**
+     * slider 버튼관련
+     */
+    public next() {
+        this.slider.slideNext();
+    }
+    public prev() {
+        this.slider.slidePrev();
+    }
+
+    public async share() {
+        await Share.share({
+            title: '공유 타이틀',
+            url: 'http://localhost:8100/home'
+        });
+    }
+
+    private getMainUserData() {
+        this.homeSvc.getMainUserInfo().subscribe({
+            next: (res: any) => {
+                console.log(res);
+                this.mainUser = res.manse;
+                this.isMainPending = false;
+            }
+        });
+    }
+
+    private getMainZordiacData() {
+        this.homeSvc.getMainZodiac().subscribe({
+            next: (res: any) => {
+                const target = res.data.split('<font color=blue>');
+                const result = target[1].split('</font>')[0];
+                const data = target[1].split('</font>')[1].replace(/(<([^>]+)>)/ig,"");
+                console.log(data);
+                console.log(result);
+                this.mainZodiac = {
+                    title: result,
+                    data: data
+                };
+                this.isZodiacPending = false;
+            }
+        });
+    }
+
+}

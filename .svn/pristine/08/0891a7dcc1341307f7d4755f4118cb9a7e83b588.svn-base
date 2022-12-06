@@ -1,0 +1,249 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+    <div class="main-wrapper" *ngIf="!isUserPending && !isMainUserPending && !isZodiacPending">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <p class="date">{{currentDate}} {{currentDay}}</p>
+                    <p class="user">
+                        <b>{{profile.name}}</b> <span>{{profile.birth_format}} ({{profile.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <p>{{profile.name}} 님,</p>
+                    <h1 class="today-summary">가까운 사람과 문제가 생길 수 있는 날이에요</h1>
+                </article>
+                <a class="btn-style">
+                    자세히
+                    <img src="/assets/images/mini-arrow.png" alt="">
+                </a>
+            </div>
+            <div class="animal-12">
+                <img src="/assets/images/rabbit.png" alt="">
+            </div>
+        </div>
+        <div class="content">
+            <h4 class="sub-title">
+                다른 운세도 확인해보세요
+            </h4>
+            <div class="card">
+                <span class="badge">{{mainUser.zodiac}}띠 운세</span>
+                <h3 class="card-title">
+                    {{mainZodiac.title}}
+                </h3>
+                <p class="explanation">
+                    {{mainZodiac.data}}
+                </p>
+                <div class="etc-btn">
+                    <button (click)="share()">
+                        공유 <i class="fa-solid fa-share-from-square"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="card">
+                <span class="badge">황소자리 운세</span>
+                <h3 class="card-title">
+                    성실함을 무기로
+                </h3>
+                <p class="explanation">
+                    안정적이고 차분한 하루라고 볼 수 있습니다. 하지만 안정성
+                    아래에는 위태로운 강이 흐르고 있다는 사실을 간과해서는
+                    안 됩니다. 무리해서 일을 처리하려고 하거나 욕심을 부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면부린다면
+                </p>
+            </div> -->
+            <div class="card accordion" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a (click)="bannerFlag = 'today'; getMainTodayData()" [class.on]="bannerFlag === 'today'">
+                                        <i>🍀</i>
+                                        오늘의운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'zodiac'; getMainStarData()" [class.on]="bannerFlag === 'zodiac'">
+                                        <i>🦄</i>
+                                        띠운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'star'; getMainStarData()" [class.on]="bannerFlag === 'star'">
+                                        <i>⭐</i>
+                                        별자리 운세
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'bio'; getMainBioData()" [class.on]="bannerFlag === 'bio'">
+                                        <i>💓</i>
+                                        바이오리듬
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'blood'; getMainBloodData()" [class.on]="bannerFlag === 'blood'">
+                                        <i>🩸</i>
+                                        혈액형
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'color'; getMainColorData();" [class.on]="bannerFlag === 'color'">
+                                        <i>🌈</i>
+                                        행운의 색
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="bannerFlag === 'today' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                오늘의운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{mainViewData}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'star' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/star-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                별자리운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <h1 class="result-text">{{mainViewData?.title}}</h1>
+                                <pre class="result-text">{{mainViewData?.data}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'zodiac' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/zodiac-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                띠운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <h1 class="result-text">{{this.mainZodiac.title}}</h1>
+                                <pre class="result-text">{{this.mainZodiac.data}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'bio' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/bio-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                바이오리듬운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p class="result-text">{{mainViewData}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'blood' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/blood-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                혈액형운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{mainViewData.data}}</pre>
+                                <hr>
+                                <pre class="result-text">{{mainViewData.data_normal}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'color' && !isMainPending">
+                <div class="tumb-card card">
+                    <img src="/assets/images/blood-banner.png" alt="">
+                </div>
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                행운의색 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <h1 class="result-text">{{mainViewData.score}}</h1>
+                                <pre class="result-text">{{mainViewData.data}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ion-content>
+
+
+
+
+
+
+<!-- 슬라이드 소스 -->
+<!-- <article>
+    <ion-slides [options]="slideOpts" #slider>
+        <ng-container *ngFor="let menu of [1,2,3,4]; index as i">
+            <ion-slide>
+                <div class="slide">
+                    <img src="../../assets/images/slide-{{i+1}}.png" />
+                    <h2>Welcome</h2>
+                    <p>The <b>ionic conference app</b> is a practical preview of the ionic.</p>
+                </div>
+            </ion-slide>
+        </ng-container>
+    </ion-slides>
+
+    <button (click)="prev()" class="swiper-button-prev">prev</button>
+    <button (click)="next()" class="swiper-button-next">next</button>
+</article> -->

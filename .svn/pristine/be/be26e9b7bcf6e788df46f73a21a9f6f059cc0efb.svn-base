@@ -1,0 +1,91 @@
+<!-- <ion-header [translucent]="true" fullscreen> -->
+    <!-- <div>
+        <ion-button expand="block" (click)="openMenu()">Open Menu</ion-button>
+    </div>
+    <div>
+        <ion-slides [options]="slideOpts">
+            <ng-container *ngFor="let menu of menuArr; index as i">
+                <ion-slide (click)="changeSubMenu(menu)">{{menu}}</ion-slide>
+            </ng-container>
+        </ion-slides>
+    </div> -->
+    <!-- <div>
+        <ion-slides [options]="subSlideOpts" #slider>
+            <ng-container *ngIf="selectedMenu === 'Menu1'">
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+                <ion-slide>subMenu1</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu2'">
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+                <ion-slide>subMenu2</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu3'">
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+                <ion-slide>subMenu3</ion-slide>
+            </ng-container>
+            <ng-container *ngIf="selectedMenu === 'Menu4'">
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+                <ion-slide>subMenu4</ion-slide>
+            </ng-container>
+        </ion-slides>
+    </div> -->
+<!-- </ion-header> -->
+<ion-header>
+    <ion-menu side="start" contentId="main-content">
+            <ion-toolbar translucent>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        <ion-content>
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="mail" slot="start"></ion-icon>
+                    <ion-label>Inbox</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="paper-plane" slot="start"></ion-icon>
+                    <ion-label>Outbox</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="heart" slot="start"></ion-icon>
+                    <ion-label>Favorites</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="archive" slot="start"></ion-icon>
+                    <ion-label>Archived</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="trash" slot="start"></ion-icon>
+                    <ion-label>Trash</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="warning" slot="start"></ion-icon>
+                    <ion-label>Spam</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Inbox</ion-title>
+        </ion-toolbar>
+        <!-- <ion-content class="ion-padding">
+            <ion-button expand="block" (click)="openMenu()">Open Menu</ion-button>
+        </ion-content> -->
+    </div>
+</ion-header>

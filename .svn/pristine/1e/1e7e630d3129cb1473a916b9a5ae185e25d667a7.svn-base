@@ -1,0 +1,46 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class SajuService {
+
+    private httpOptions = {
+        headers: new HttpHeaders(
+            {
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin": "*"
+            }
+        ),
+        responseType: 'text' as 'json'
+    };
+
+    constructor(
+       private http: HttpClient,
+    ) { }
+
+    /**
+     * 사주 전체 데이터
+     */
+     public getAllSaju() {
+        return this.http.get<any>(`${environment.api.v1}/saju/myungli-all-life`);
+    }
+
+    /**
+     * 사주 자평명리학 평생총운
+     * 총평
+     */
+     public getSajuMyungli() {
+        return this.http.get<any>(`${environment.api.v1}/saju/myungli/all/total`);
+    }
+
+    /**
+     * 사주 자평명리학 평생총운
+     * 건강운
+     */
+     public getSajuMyungliHealth() {
+        return this.http.get<any>(`${environment.api.v1}/saju/myungli/all/health`);
+    }
+}

@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class HomeService {
+
+    constructor(
+        private http: HttpClient,
+    ) { }
+
+    /**
+     * 메인페이지에 사용 할 회원 기본정보
+     */
+    public getMainUserInfo() {
+        return this.http.get(`${environment.api.v1}/service/user-info`);
+    }
+
+    /**
+     * 메인페이지에 띠별운세
+     */
+    public getMainZodiac() {
+        return this.http.get(`${environment.api.v1}/data/fourtune/zodiac`);
+    }
+}

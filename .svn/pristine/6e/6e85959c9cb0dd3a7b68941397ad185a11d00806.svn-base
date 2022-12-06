@@ -1,0 +1,377 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true" *ngIf="!isUserPending && !isMainUserPending">
+    <div class="saju-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <app-cal-today></app-cal-today>
+                    <p class="user">
+                        <b>{{profile.name}}</b> <span>{{profile.birth_format}} ({{profile.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <h1 class="today-summary">{{profile.name}} 님의 사주명식</h1>
+                    <div class="saju-info">
+                        <div class="card-box">
+                            <ul>
+                                <li>시주</li>
+                                <li>일주</li>
+                                <li>월주</li>
+                                <li>연주</li>
+                            </ul>
+                            <ul class="celestial">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.hour_h_oheng_format.class">
+                                            {{mainUser.hour_h}}
+                                            <small class="day">{{mainUser.hour_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.day_h_oheng_format.class">
+                                            {{mainUser.day_h}}
+                                            <small class="day">{{mainUser.day_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.month_h_oheng_format.class">
+                                            {{mainUser.month_h}}
+                                            <small class="day">{{mainUser.month_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.year_h_oheng_format.class">
+                                            {{mainUser.year_h}}
+                                            <small class="day">{{mainUser.year_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="zodiac">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.hour_e_oheng_format.class">{{mainUser.hour_e}}
+                                            <small class="day">{{mainUser.hour_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.day_e_oheng_format.class">
+                                            {{mainUser.day_e}}
+                                            <small class="day">{{mainUser.day_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.month_e_oheng_format.class">
+                                            {{mainUser.month_e}}
+                                            <small class="day">{{mainUser.month_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.year_e_oheng_format.class">
+                                            {{mainUser.year_e}}
+                                            <small class="day">{{mainUser.year_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card accordion mt-0" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a (click)="bannerFlag = 'myungli'; subBannerFlag = 'total'; getTotalData()" [class.on]="bannerFlag === 'myungli'">
+                                        <i>🌞</i>
+                                        자평명리학 평생총운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'tojung'; subBannerFlag = 'first_year'; getTojungFirstYear()" [class.on]="bannerFlag === 'tojung'">
+                                        <i>📆</i>
+                                        올해의 토정비결
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'sinsu'; subBannerFlag = 'total'; getSinsuTotal()" [class.on]="bannerFlag === 'sinsu'">
+                                        <i>🐯</i>
+                                        새해신수
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'pastlife'; getPastLift()" [class.on]="bannerFlag === 'pastlife'">
+                                        <i>🔮</i>
+                                        전생운
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="bannerFlag === 'myungli'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!----- 자평명리학 평생총운 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a (click)="subBannerFlag = 'total'; getTotalData()" [class.on]="subBannerFlag === 'total'">
+                                <i>✨</i>
+                                사주총평
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'health'; getHealthData()" [class.on]="subBannerFlag === 'health'">
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'character'; getCharacterData()" [class.on]="subBannerFlag === 'character'">
+                                <i>🙂</i>
+                                선천성격운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'job'; getJobData()" [class.on]="subBannerFlag === 'job'">
+                                <i>💼</i>
+                                직업운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'sigi'; getSigiData()" [class.on]="subBannerFlag === 'sigi'">
+                                <i>📆</i>
+                                시기별운세
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'couple'; getCoupleData()" [class.on]="subBannerFlag === 'couple'">
+                                <i>👩‍❤️‍👨</i>
+                                부부애정운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!----- 올해의 토정비결 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a (click)="subBannerFlag = 'first_year'; getTojungFirstYear()" [class.on]="subBannerFlag === 'first_year'">
+                                <i>🗓️︎</i>
+                                일년신수 (전반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'second_year'; getTojungSecondYear()" [class.on]="subBannerFlag === 'second_year'">
+                                <i>🗓️</i>
+                                일년신수 (후반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'love'; getTojungLove()" [class.on]="subBannerFlag === 'love'">
+                                <i>💌</i>
+                                연애운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'health'; getTojungHealth()" [class.on]="subBannerFlag === 'health'">
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'job'; getTojungJob()" [class.on]="subBannerFlag === 'job'">
+                                <i>💼</i>
+                                직장운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'hope'; getTojungHope()" [class.on]="subBannerFlag === 'hope'">
+                                <i>🙏🏻</i>
+                                소망운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'month'; getTojungMonth()" [class.on]="subBannerFlag === 'month'">
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!------------- 새해신수 ----------->
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a (click)="subBannerFlag = 'total'; getSinsuTotal()" [class.on]="subBannerFlag === 'total'">
+                                <i>✨</i>
+                                총운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'business'; getSinsuBusiness()" [class.on]="subBannerFlag === 'business'">
+                                <i>💰️</i>
+                                사업거래운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'love'; getSinsuLove()" [class.on]="subBannerFlag === 'love'">
+                                <i>💑</i>
+                                연인애정운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'health'; getSinsuHealth()" [class.on]="subBannerFlag === 'health'">
+                                <i>💊</i>
+                                건강질병운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'move'; getSinsuMove()" [class.on]="subBannerFlag === 'move'">
+                                <i>✈️</i>
+                                여행이사운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'job'; getSinsuJob()" [class.on]="subBannerFlag === 'job'">
+                                <i>💼</i>
+                                직장관록운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'month'; getSinsuMonth()" [class.on]="subBannerFlag === 'month'">
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <!-- 자평명리학 평생총운 -->
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'total' && !isSajuPending">
+                <app-result-view [title]="'사주총평'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'health' && !isSajuPending">
+                <app-result-view [title]="'건강운'" [data]="sajuData" [type]="2"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'character' && !isSajuPending">
+                <app-result-view [title]="'선천성격운'" [data]="sajuData.data" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'job' && !isSajuPending">
+                <app-result-view [title]="'직업운'" [data]="sajuData" [type]="2"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'sigi' && !isSajuPending">
+                <app-result-view [title]="'시기별운세'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'myungli' && subBannerFlag === 'couple' && !isSajuPending">
+                <app-result-view [title]="'부부애정운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <!-- 올해의 토정비결 -->
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'first_year' && !isSajuPending">
+                <app-result-view [title]="'일년신수(전반기)'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'second_year' && !isSajuPending">
+                <app-result-view [title]="'일년신수(후반기)'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'love' && !isSajuPending">
+                <app-result-view [title]="'연애운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'health' && !isSajuPending">
+                <app-result-view [title]="'건강운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'job' && !isSajuPending">
+                <app-result-view [title]="'직장운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'hope' && !isSajuPending">
+                <app-result-view [title]="'소망운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung' && subBannerFlag === 'month' && !isSajuPending">
+                <app-result-view [title]="'월별운'" [data]="sajuData" [type]="3"></app-result-view>
+            </ng-container>
+            <!-- 새해신수 -->
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'total' && !isSajuPending">
+                <app-result-view [title]="'총운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'business' && !isSajuPending">
+                <app-result-view [title]="'사업거래운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'love' && !isSajuPending">
+                <app-result-view [title]="'연인애정운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'health' && !isSajuPending">
+                <app-result-view [title]="'건강질병운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'move' && !isSajuPending">
+                <app-result-view [title]="'여행이사운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'job' && !isSajuPending">
+                <app-result-view [title]="'직장관록운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu' && subBannerFlag === 'month' && !isSajuPending">
+                <app-result-view [title]="'월별운'" [data]="sajuData" [type]="3"></app-result-view>
+            </ng-container>
+            <!-- 전생 -->
+            <ng-container *ngIf="bannerFlag === 'pastlife' && !isSajuPending">
+                <app-result-view [title]="'전생운'" [data]="sajuData" [type]="1"></app-result-view>
+            </ng-container>
+        </div>
+    </div>
+</ion-content>

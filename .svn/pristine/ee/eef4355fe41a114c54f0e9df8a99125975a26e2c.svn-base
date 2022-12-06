@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'app-saju',
+    templateUrl: './saju.page.html',
+    styleUrls: ['./saju.page.scss'],
+})
+export class SajuPage implements OnInit {
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+}

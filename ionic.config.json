@@ -1,0 +1,7 @@
+{
+  "name": "saju-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

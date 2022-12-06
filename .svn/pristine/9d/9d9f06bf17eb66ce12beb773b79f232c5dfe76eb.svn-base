@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-adult',
+  templateUrl: './adult.page.html',
+  styleUrls: ['./adult.page.scss'],
+})
+export class AdultPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

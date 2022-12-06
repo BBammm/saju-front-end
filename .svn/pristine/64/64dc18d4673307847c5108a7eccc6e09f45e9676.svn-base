@@ -1,0 +1,111 @@
+ion-content {
+    background-color: #f7f7f7;
+    div.mypage-wrapper{
+        max-width: 720px;
+        position: relative;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background-color: #fff;
+        div.title-box{
+            margin-bottom: 25px;
+            h1{
+                font-weight: bold;
+                font-size: 24px;
+            }
+        }
+        hr{
+            margin: 2rem 0;
+        }
+        article.mid{
+            fieldset{
+                padding: 0;
+                border: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+                label{
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: 500;
+                    min-width: 85px;
+                }
+                input{
+                    display: inline-flex;
+                    width: 100%;
+                    padding: 15px;
+                    border-radius: 15px;
+                    outline-color: #358ccb6b;
+                    outline-width: 0.1em;
+                    box-sizing: content-box;
+                    border:1px solid #dfdfdf;
+                    font-size: 16px;
+                    color: #666;
+                }
+                select{
+                    display: inline-flex;
+                    margin-right: 10px;
+                    padding: 15px 5px;
+                    border-radius: 15px;
+                    outline-color: #358ccb6b;
+                    outline-width: 0.1em;
+                    box-sizing: content-box;
+                    border:1px solid #dfdfdf;
+                    font-size: 16px;
+                    width: 100%;
+                    max-width: 60px;
+                    color: #666;
+                }
+                button{
+                    display: inline-flex;
+                    width: 100%;
+                    padding: 15px;
+                    border-radius: 15px;
+                    outline-color: #358ccb6b;
+                    outline-width: 0.1em;
+                    box-sizing: content-box;
+                    border:1px solid #dfdfdf;
+                    background-color: #fff;
+                    justify-content: center;
+                    font-size: 16px;
+                    transition: all 0.5s ease;
+                    color: #666;
+                    &.male{
+                        margin-right: 10px;
+                    }
+                    &:focus,&.active{
+                        border-color: #358ccb6b;
+                        box-shadow: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+                        font-weight: bold;
+                        color: #333;
+                    }
+                }
+            }
+            div.btn-home{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    border-radius: 25px;
+                    font-size: 14px;
+                    background-color: #2085f6;
+                    color: #fff;
+                    width: 140px;
+                    margin-left: 20px;
+                    height: 50px;
+                    margin-left: 15px;
+                    &.btn-delete{
+                        background-color: #737373;
+                    }
+                }
+            }
+        }
+        button.plus-user-btn{
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    }
+}

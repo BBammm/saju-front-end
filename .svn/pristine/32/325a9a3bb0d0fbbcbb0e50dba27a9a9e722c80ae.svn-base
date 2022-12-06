@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { FortuneService } from '../service/fortune.service';
+
+@Component({
+    selector: 'app-today-fortune',
+    templateUrl: './today-fortune.page.html',
+    styleUrls: ['./today-fortune.page.scss'],
+})
+export class TodayFortunePage implements OnInit {
+
+    public zodiacList: any;
+    public isPending = true;
+
+    constructor(
+        private fortuneApi: FortuneService
+    ) { }
+
+    ngOnInit() {
+        this.fortuneApi.getZodiacList().subscribe({
+            next: (res) => {
+                this.zodiacList = res.data;
+                console.log(this.zodiacList);
+                this.isPending = false;
+            }
+        });
+    }
+
+}

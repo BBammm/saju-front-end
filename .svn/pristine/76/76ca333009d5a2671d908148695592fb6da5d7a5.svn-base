@@ -1,0 +1,408 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true" *ngIf="!isUserPending && !isMainUserPending">
+    <div class="saju-wrapper">
+        <div class="main-visual">
+            <div class="info-wrap">
+                <article class="date-user-info">
+                    <app-cal-today></app-cal-today>
+                    <p class="user">
+                        <b>{{profile.name}}</b> <span>{{profile.birth_format}} ({{profile.sl === 'S' ? '양' : '음'}})</span>
+                    </p>
+                </article>
+                <article class="text-box">
+                    <h1 class="today-summary">{{profile.name}} 님의 사주명식</h1>
+                    <div class="saju-info">
+                        <div class="card-box">
+                            <ul>
+                                <li>시주</li>
+                                <li>일주</li>
+                                <li>월주</li>
+                                <li>연주</li>
+                            </ul>
+                            <ul class="celestial">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.hour_h_oheng_format.class">
+                                            {{mainUser.hour_h}}
+                                            <small class="day">{{mainUser.hour_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.day_h_oheng_format.class">
+                                            {{mainUser.day_h}}
+                                            <small class="day">{{mainUser.day_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.month_h_oheng_format.class">
+                                            {{mainUser.month_h}}
+                                            <small class="day">{{mainUser.month_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_h_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.year_h_oheng_format.class">
+                                            {{mainUser.year_h}}
+                                            <small class="day">{{mainUser.year_h_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="zodiac">
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.hour_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.hour_e_oheng_format.class">{{mainUser.hour_e}}
+                                            <small class="day">{{mainUser.hour_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.day_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.day_e_oheng_format.class">
+                                            {{mainUser.day_e}}
+                                            <small class="day">{{mainUser.day_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.month_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.month_e_oheng_format.class">
+                                            {{mainUser.month_e}}
+                                            <small class="day">{{mainUser.month_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card">
+                                        <span class="title">
+                                            {{mainUser.year_e_sipsin}}
+                                        </span>
+                                        <p [ngClass]="mainUser.year_e_oheng_format.class">
+                                            {{mainUser.year_e}}
+                                            <small class="day">{{mainUser.year_e_oheng_format.oheng}}</small>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card accordion mt-0" id="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            이런 테스트는 어떠세요?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    <a (click)="bannerFlag = 'myungli'; subBannerFlag = 'total'; getTotalData()" [class.on]="bannerFlag === 'myungli'">
+                                        <i>🌞</i>
+                                        자평명리학 평생총운
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'tojung';" [class.on]="bannerFlag === 'tojung'">
+                                        <i>📆</i>
+                                        올해의 토정비결
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'sinsu';" [class.on]="bannerFlag === 'sinsu'">
+                                        <i>🐯</i>
+                                        새해신수
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="bannerFlag = 'pastlife';" [class.on]="bannerFlag === 'pastlife'">
+                                        <i>🔮</i>
+                                        전생운
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="bannerFlag === 'myungli'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!----- 자평명리학 평생총운 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a (click)="subBannerFlag = 'total'; getTotalData()" [class.on]="subBannerFlag === 'total'">
+                                <i>✨</i>
+                                사주총평
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'health'; getHealthData()" [class.on]="subBannerFlag === 'health'">
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'character'; getCharacterData()" [class.on]="subBannerFlag === 'character'">
+                                <i>🙂</i>
+                                선천성격운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'job'; getJobData()" [class.on]="subBannerFlag === 'job'">
+                                <i>💼</i>
+                                직업운
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'sigi'; getSigiData()" [class.on]="subBannerFlag === 'sigi'">
+                                <i>📆</i>
+                                시기별운세
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="subBannerFlag = 'couple'; getCoupleData()" [class.on]="subBannerFlag === 'couple'">
+                                <i>👩‍❤️‍👨</i>
+                                부부애정운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'tojung'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!----- 올해의 토정비결 ------>
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>🗓️︎</i>
+                                일년신수 (전반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🗓️</i>
+                                일년신수 (후반기)
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💌</i>
+                                연애운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💪🏻</i>
+                                건강운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💼</i>
+                                직장운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>🙏🏻</i>
+                                소망운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="bannerFlag === 'sinsu'">
+                <div class="tumb-card card">
+                    <img src="/assets/images/today-banner.png" alt="">
+                </div>
+                <!------------- 새해신수 ----------->
+                <div class="card sub-menubox">
+                    <ul>
+                        <li>
+                            <a>
+                                <i>✨</i>
+                                총운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💰️</i>
+                                사업거래운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💑</i>
+                                연인애정운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💊</i>
+                                건강질병운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>✈️</i>
+                                여행이사운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>💼</i>
+                                직장관록운
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i>📆</i>
+                                월별운
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'total' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                사주총평 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'health' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                건강운 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData.data1}}</pre>
+                                <pre class="result-text">{{sajuData.data2}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'character' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                선천성격운 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData.data}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'job' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                직업운 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData.data1}}</pre>
+                                <pre class="result-text">{{sajuData.data2}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'sigi' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                시기별운세 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="subBannerFlag === 'couple' && !isSajuPending">
+                <div class="card accordion" id="">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                부부애정운 결과보기
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <pre class="result-text">{{sajuData}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ion-content>

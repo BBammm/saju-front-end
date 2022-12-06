@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-tarot',
+  templateUrl: './tarot.page.html',
+  styleUrls: ['./tarot.page.scss'],
+})
+export class TarotPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

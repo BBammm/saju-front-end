@@ -1,0 +1,54 @@
+<ion-content>
+    <div class="auth-wrapper">
+        <div class="title-box">
+            <h1>
+                회원가입을 위하여<br/>
+                프로필을 입력해주세요
+            </h1>
+        </div>
+        <article class="mid">
+            <form [formGroup]="joinFormGroup" (ngSubmit)="submit()">
+                <fieldset>
+                    <label for="name">
+                        이름
+                    </label>
+                    <input type="text" id="name" formControlName="name" placeholder="이름을 입력해주세요">
+                </fieldset>
+                <fieldset class="gender-field">
+                    <label for="">
+                        성별
+                    </label>
+                    <button type="button" (click)="isBtnActive = true; joinFormGroup.get('gender').setValue('M')" class="male" [class.active]="isBtnActive">남자</button>
+                    <button type="button" (click)="isBtnActive = false; joinFormGroup.get('gender').setValue('W')" class="female" [class.active]="!isBtnActive">여자</button>
+                </fieldset>
+                <fieldset>
+                    <label for="birth">
+                        생년월일
+                    </label>
+                    <select class="" name="" formControlName="sl">
+                        <option value="S">양력</option>
+                        <option value="L">음력</option>
+                        <option value="M">음력(윤달)</option>
+                    </select>
+                    <input type="number" id="birth" formControlName="birth_ym" placeholder="ex) 19900101">
+                </fieldset>
+                <fieldset>
+                    <label for="birth-time">
+                        태어난시
+                    </label>
+                    <select class="" name="">
+                        <option value="" selected>오전</option>
+                        <option value="">오후</option>
+                        <option value="">모름</option>
+                    </select>
+                    <input type="text" id="" placeholder="ex) 24:00">
+                    <!-- <input type="time" id="birth-time" formControlName="birth_time" placeholder="숫자 4자리"> -->
+                </fieldset>
+                <hr>
+                <button type="submit" class="submit-btn">
+                    시작하기
+                </button>
+            </form>
+        </article>
+    </div>
+</ion-content>

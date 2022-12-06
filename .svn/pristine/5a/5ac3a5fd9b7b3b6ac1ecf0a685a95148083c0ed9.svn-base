@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-mypage-profile',
+  templateUrl: './mypage-profile.page.html',
+  styleUrls: ['./mypage-profile.page.scss'],
+})
+export class MypageProfilePage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
